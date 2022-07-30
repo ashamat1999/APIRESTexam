@@ -1,0 +1,3 @@
+{ "sku" : "A5", "name" : "Lasagna", "stock" : 47, "price" : 45.000000}
+{ "sku" : "A4", "name" : "Papas", "stock" : 37, "price" : 28.600000}
+{ "sku" : "A6", "name" : "Hamburgesa", "stock" : 12, "price" : 14.600000}

@@ -1,0 +1,66 @@
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+</head>
+
+<body>
+    <div id="app">
+        <v-app>
+            <v-main>
+              <div>
+                <v-app-bar
+                  color="#fcb69f"
+                  dark
+                  shrink-on-scroll
+                  src="/static/img/Logo1.jpg"
+                  scroll-target="#scrolling-techniques-2"
+                >
+                  <template v-slot:img="{ props }">
+                    <v-img
+                      v-bind="props"
+                      gradient="to top right, rgba(19,84,122,.5), rgba(128,208,199,.8)"
+                    ></v-img>
+                  </template>          
+                  <v-spacer></v-spacer>
+                  <v-tabs align-with-title>
+                    <v-tab href="{{ url_for('pending_orders') }}">Pending orders</v-tab>
+                    <v-tab href="{{ url_for('processing_orders') }}">Orders in process</v-tab>
+                    <v-tab href="{{ url_for('completed_orders') }}">Completed orders</v-tab>
+                    <v-tab href="{{ url_for('delivered_orders') }}">Orders delivered</v-tab>
+                    <v-tab href="{{ url_for('cancelled_orders') }}">Canceled orders</v-tab>
+                  </v-tabs>
+
+                </v-app-bar>
+              </div>
+
+              <div>
+
+              </div>
+
+              <div id="inside-app" >
+                {% block content %}{% endblock %}
+              </div>
+            </v-main>
+        </v-app>
+    </div>
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+    <script>
+        new Vue({
+          el: '#app',
+          vuetify: new Vuetify(),
+        })
+    </script>
+
+    <style>
+      
+    </style>
+
+</body>
