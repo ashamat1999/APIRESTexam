@@ -1,5 +1,6 @@
 from Models.Inventory import Inventory
 
+# Class to represent an Order 
 class Order:
 
 
@@ -13,6 +14,7 @@ class Order:
         skus=[productInventory.get_product_dict()['sku'] for productInventory in inventory.inventoryProducts ]
         total=0
         
+        # Calculate total of Order and initialize it.
         for productSku in self.productsSKUS:
             if productSku in skus:
                 price=inventory.use_product_in_order(productSku)
@@ -21,17 +23,19 @@ class Order:
 
         self.total=total
 
+    # Method to return instance data as string in a dictionary form.
     def __str__(self):
         
         listSkus=[]
 
         for productSKU in self.productsSKUS:
-            listSkus.append(f'"{productSKU}"')
+            listSkus.append(f'"{productSKU}"') # Get all productSKUS into a list
 
-        stringProductsSkus = ",".join(listSkus)
+        stringProductsSkus = ",".join(listSkus) # Convert productsSKUS into string
 
         return '{ "id" : "%s", "table" : %i, "productsSKUS" : [%s], "status" : "%s", "total": %f}' % (self.id, self.table, stringProductsSkus, self.status, self.total)
 
+    # Function to get order as dictionary
     def get_order(self):
         order={
             "id" : self.id,
@@ -42,7 +46,8 @@ class Order:
         }
 
         return order
-    
+
+    # Necessary setters    
     def set_status(self, status):
         self.status=status
 
